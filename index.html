@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Esquemas interactivos de estequiometría y disoluciones para proyectar en clase.">
+  <title>Cálculos estequiométricos · Álvaro Iregui</title>
+  <link rel="stylesheet" href="esquema.css">
+  <script src="esquema.js" defer></script>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="toolbar-titles">
+      <p class="author">Álvaro Iregui</p>
+      <h1 id="titulo-esquema" aria-live="polite">Cálculos estequiométricos</h1>
+    </div>
+    <div class="toolbar-actions">
+      <button id="reiniciar" type="button">Reiniciar</button>
+      <button id="cambiar-esquema" type="button" aria-controls="estequiometria disoluciones">Disoluciones</button>
+    </div>
+  </header>
+
+  <main id="estequiometria" class="viewport" aria-label="Esquema interactivo de cálculos estequiométricos">
+    <svg class="diagram" viewBox="12 134 576 331" aria-label="Relaciones entre masa, cantidad de sustancia y volumen de A y B">
+      <defs>
+        <marker id="flecha" viewBox="0 0 5 5" refX="4.5" refY="2.5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0 0 L5 2.5 0 5 1 2.5Z" fill="#222"/>
+        </marker>
+        <path id="muestra" d="M-21.5-23 H21.5 V17 Q12 8 1 16 Q-11 25-21.5 19Z"/>
+        <path id="masa" d="M0-21 8-12 21-11 16 0 21 11 8 12 0 21-8 12-21 11-16 0-21-11-8-12Z"/>
+        <path id="mol" d="M0-21 17.5-11 17.5 11 0 21-17.5 11-17.5-11Z"/>
+        <path id="disolucion" d="M0-23 C-6-18-22-2-22 9 C-22 19-12 25 0 25 C12 25 22 19 22 9 C22-2 6-18 0-23Z"/>
+        <path id="gas" d="M-22-7 C-19-15-12-18-6-16 C1-22 9-17 12-14 C20-15 28-9 26-3 C32 4 25 12 15 11 C11 18 3 18-3 14 C-11 20-23 14-22 8 C-32 7-33-3-22-7Z"/>
+        <path id="formula" d="M-25 0-15-10 H15 L25 0 15 10 H-15Z"/>
+      </defs>
+
+      <g class="connections">
+        <path d="M148 169.5 H51 Q44 169.5 44 177 V220"/>
+        <path d="M170.5 169.5 H134 Q127.5 169.5 127.5 177 V276"/>
+        <path d="M182 169.5 H205 Q212 169.5 212 177 V293 Q212 298.5 218 298.5 H224"/>
+        <path d="M44 263 V291 Q44 298.5 51 298.5 H108"/>
+        <path d="M146 298.5 H223"/>
+        <path d="M260 298.5 H317"/>
+        <path d="M355 298.5 H440"/>
+        <path d="M354 298.5 H363 Q369 298.5 369 293 V177 Q369 169.5 376 169.5 H395"/>
+        <path d="M460 277 V177 Q460 169.5 453 169.5 H437"/>
+        <path d="M556 221 V177 Q556 169.5 549 169.5 H437"/>
+        <path d="M480 298.5 H549 Q556 298.5 556 291 V261"/>
+        <path class="segment" d="M214 419 V409 Q214 401 206 401 H196 Q188 401 188 393 V340 Q188 333 196 333 H234 Q242 333 242 325"/>
+        <path class="segment" d="M214 409 Q214 401 222 401 H246 Q254 401 254 393 V340 Q254 334 249 333 Q242 332 242 325"/>
+        <path d="M242 325 V320"/>
+        <path class="segment" d="M336 320 V325 Q336 332 327 333 Q321 334 321 340 V397 Q321 404 328 404 H364 Q371 404 371 411"/>
+        <path class="segment" d="M336 325 Q336 333 344 333 H383 Q391 333 391 340 V396 Q391 403 384 403 H379 Q371 403 371 411"/>
+        <path d="M371 411 V419"/>
+        <path d="M241 436.5 H342"/>
+      </g>
+
+      <g class="shape solution" transform="translate(170.5 168.5)" data-color tabindex="0" role="button" aria-label="Volumen de disolución A" aria-pressed="false">
+        <use class="surface" href="#disolucion"/>
+        <text><tspan x="0" y="2.8">Volumen</tspan><tspan x="0" dy="9.4">d<tspan class="super">on</tspan> A</tspan></text>
+      </g>
+      <g class="shape solution" transform="translate(416 168.5)" data-color tabindex="0" role="button" aria-label="Volumen de disolución B" aria-pressed="false">
+        <use class="surface" href="#disolucion"/>
+        <text><tspan x="0" y="2.8">Volumen</tspan><tspan x="0" dy="9.4">d<tspan class="super">on</tspan> B</tspan></text>
+      </g>
+
+      <g class="shape mass sample" transform="translate(44.5 244)" data-color tabindex="0" role="button" aria-label="Masa de muestra, mineral o disolución A" aria-pressed="false">
+        <use class="surface" href="#muestra"/>
+        <text><tspan x="0" y="-13.4">Masa</tspan><tspan x="0" dy="8">muestra /</tspan><tspan x="0" dy="8">mineral /</tspan><tspan x="0" dy="8">d<tspan class="super">on</tspan> A</tspan></text>
+      </g>
+      <g class="shape mass" transform="translate(127.5 298.5)" data-color tabindex="0" role="button" aria-label="Masa de A" aria-pressed="false">
+        <use class="surface" href="#masa"/>
+        <text><tspan x="0" y="-3.3">Masa</tspan><tspan x="0" dy="11">A</tspan></text>
+      </g>
+      <g class="shape amount" transform="translate(242 298.5)" data-color tabindex="0" role="button" aria-label="Moles de A" aria-pressed="false">
+        <use class="surface" href="#mol"/>
+        <text><tspan x="0" y="-3.3">Mol</tspan><tspan x="0" dy="11">A</tspan></text>
+      </g>
+      <g class="shape amount" transform="translate(336 298.5)" data-color tabindex="0" role="button" aria-label="Moles de B" aria-pressed="false">
+        <use class="surface" href="#mol"/>
+        <text><tspan x="0" y="-3.3">Mol</tspan><tspan x="0" dy="11">B</tspan></text>
+      </g>
+      <g class="shape mass" transform="translate(460.5 298.5)" data-color tabindex="0" role="button" aria-label="Masa de B" aria-pressed="false">
+        <use class="surface" href="#masa"/>
+        <text><tspan x="0" y="-3.3">Masa</tspan><tspan x="0" dy="11">B</tspan></text>
+      </g>
+      <g class="shape mass sample" transform="translate(555.5 244)" data-color tabindex="0" role="button" aria-label="Masa de muestra, mineral o disolución B" aria-pressed="false">
+        <use class="surface" href="#muestra"/>
+        <text><tspan x="0" y="-13.4">Masa</tspan><tspan x="0" dy="8">muestra /</tspan><tspan x="0" dy="8">mineral /</tspan><tspan x="0" dy="8">d<tspan class="super">on</tspan> B</tspan></text>
+      </g>
+
+      <g class="shape gas" transform="translate(214 438)" data-color tabindex="0" role="button" aria-label="Volumen de gas A" aria-pressed="false">
+        <use class="surface" href="#gas"/>
+        <text><tspan x="0" y="-3.8">Volumen</tspan><tspan x="0" dy="9.4">gas A</tspan></text>
+      </g>
+      <g class="shape gas" transform="translate(371 438)" data-color tabindex="0" role="button" aria-label="Volumen de gas B" aria-pressed="false">
+        <use class="surface" href="#gas"/>
+        <text><tspan x="0" y="-3.8">Volumen</tspan><tspan x="0" dy="9.4">gas B</tspan></text>
+      </g>
+
+      <g class="factor" transform="translate(82 169.5)" data-color tabindex="0" role="button" aria-label="Densidad de la disolución A" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Densidad d<tspan class="super">on</tspan></tspan><tspan x="0" dy="8">(g/mL d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(127.5 234)" data-color tabindex="0" role="button" aria-label="Concentración de A, gramos por litro de disolución" aria-pressed="false">
+        <rect class="surface" x="-25" y="-10" width="50" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Concentración</tspan><tspan x="0" dy="8">(g A/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(212 234)" data-color tabindex="0" role="button" aria-label="Molaridad de A, moles por litro de disolución" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Molaridad</tspan><tspan x="0" dy="8">(mol A/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(72 298.5)" data-color tabindex="0" role="button" aria-label="Riqueza de A, porcentaje en masa" aria-pressed="false">
+        <rect class="surface" x="-16" y="-10" width="32" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Riqueza</tspan><tspan x="0" dy="8">(% masa)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(180 298.5)" data-color tabindex="0" role="button" aria-label="Masa molar de A" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Masa molar</tspan><tspan x="0" dy="8">(g/mol A)</tspan></text>
+      </g>
+      <g class="factor ratio" transform="translate(289 298.5)" data-color tabindex="0" role="button" aria-label="Coeficientes estequiométricos, relación entre moles" aria-pressed="false">
+        <rect class="surface" x="-18" y="-10" width="36" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Coef.</tspan><tspan x="0" dy="8">estequiom.</tspan></text>
+      </g>
+      <g class="factor" transform="translate(402 298.5)" data-color tabindex="0" role="button" aria-label="Masa molar de B" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Masa molar</tspan><tspan x="0" dy="8">(g/mol B)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(523 298.5)" data-color tabindex="0" role="button" aria-label="Riqueza de B, porcentaje en masa" aria-pressed="false">
+        <rect class="surface" x="-16" y="-10" width="32" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Riqueza</tspan><tspan x="0" dy="8">(% masa)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(369 234)" data-color tabindex="0" role="button" aria-label="Molaridad de B, moles por litro de disolución" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Molaridad</tspan><tspan x="0" dy="8">(mol B/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(460 234)" data-color tabindex="0" role="button" aria-label="Concentración de B, gramos por litro de disolución" aria-pressed="false">
+        <rect class="surface" x="-25" y="-10" width="50" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Concentración</tspan><tspan x="0" dy="8">(g B/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(505 169.5)" data-color tabindex="0" role="button" aria-label="Densidad de la disolución B" aria-pressed="false">
+        <rect class="surface" x="-21.5" y="-10" width="43" height="20" rx="2.5"/>
+        <text><tspan x="0" y="-2.4">Densidad d<tspan class="super">on</tspan></tspan><tspan x="0" dy="8">(g/mL d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+
+      <g class="factor" transform="translate(188 374)" data-color tabindex="0" role="button" aria-label="Volumen molar de A a cero grados Celsius y una atmósfera" aria-pressed="false">
+        <rect class="surface" x="-25" y="-15" width="50" height="30" rx="2.5"/>
+        <text><tspan x="0" y="-6.7">Volumen molar,</tspan><tspan x="0" dy="8.4">0 °C, 1 atm</tspan><tspan x="0" dy="8.4">(22,4 L/mol A)</tspan></text>
+      </g>
+      <g class="formula" transform="translate(254 372.5)" data-color tabindex="0" role="button" aria-label="Ecuación de los gases ideales para A" aria-pressed="false">
+        <use class="surface" href="#formula"/>
+        <text y="2.2">p·V=n·R·T</text>
+      </g>
+      <g class="formula" transform="translate(321 372.5)" data-color tabindex="0" role="button" aria-label="Ecuación de los gases ideales para B" aria-pressed="false">
+        <use class="surface" href="#formula"/>
+        <text y="2.2">p·V=n·R·T</text>
+      </g>
+      <g class="factor" transform="translate(391 374)" data-color tabindex="0" role="button" aria-label="Volumen molar de B a cero grados Celsius y una atmósfera" aria-pressed="false">
+        <rect class="surface" x="-25" y="-15" width="50" height="30" rx="2.5"/>
+        <text><tspan x="0" y="-6.7">Volumen molar,</tspan><tspan x="0" dy="8.4">0 °C, 1 atm</tspan><tspan x="0" dy="8.4">(22,4 L/mol B)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(289 436.5)" data-color tabindex="0" role="button" aria-label="Coeficientes estequiométricos, relación entre volúmenes a presión y temperatura constantes" aria-pressed="false">
+        <rect class="surface" x="-18.5" y="-15" width="37" height="30" rx="2.5"/>
+        <text><tspan x="0" y="-6.7">Coef.</tspan><tspan x="0" dy="8.4">estequiom.</tspan><tspan x="0" dy="8.4">(p y T ctes.)</tspan></text>
+      </g>
+
+      <g class="legend" aria-label="Leyenda">
+        <rect class="legend-background" x="32" y="369" width="111" height="76" rx="1"/>
+        <g class="legend-key mass">
+          <use class="swatch" href="#muestra" transform="translate(44.5 381) scale(.23)"/>
+          <use class="swatch" href="#masa" transform="translate(59.5 380.3) scale(.32)"/>
+          <rect class="surface" x="69.5" y="376" width="44" height="10" rx="2"/>
+          <text x="72" y="383">masas (gramos)</text>
+        </g>
+        <g class="legend-key solution">
+          <use class="swatch" href="#disolucion" transform="translate(123 398.2) scale(.26)"/>
+          <rect class="surface" x="69.5" y="393" width="46" height="10" rx="2"/>
+          <text x="72" y="400">Volumen d<tspan class="super">on</tspan> (mL)</text>
+        </g>
+        <g class="legend-key gas">
+          <use class="swatch" href="#gas" transform="translate(51 413.5) scale(.34)"/>
+          <rect class="surface" x="69.5" y="409" width="46" height="10" rx="2"/>
+          <text x="72" y="416">Volumen gas (L)</text>
+        </g>
+        <g class="legend-key factor">
+          <path class="legend-arrow" d="M40 429.5 H128"/>
+          <rect class="surface" x="55" y="424.5" width="65" height="10" rx="2"/>
+          <text x="57" y="431.5">factores de conversión</text>
+        </g>
+      </g>
+
+      <g class="units" data-color tabindex="0" role="button" aria-label="Unidades y equivalencias de la ecuación de los gases ideales" aria-pressed="false">
+        <rect class="surface" x="452" y="373.5" width="103" height="60" rx="2"/>
+        <text x="457" y="390">
+          <tspan x="457">p (<tspan class="unit-symbol">atm</tspan>)</tspan><tspan x="496">1 atm = 760 mmHg</tspan>
+          <tspan x="457" dy="10">V (<tspan class="unit-symbol">L</tspan>)</tspan>
+          <tspan x="457" dy="10">n (<tspan class="unit-symbol">mol</tspan>)</tspan>
+          <tspan x="457" dy="10">T (<tspan class="unit-symbol">K</tspan>)</tspan><tspan x="496">T(K) = T(°C) + 273</tspan>
+          <tspan x="457" dy="10">R = 0,082</tspan>
+        </text>
+      </g>
+      <g class="formula" transform="translate(502 373.5) scale(1.12 1)" data-color tabindex="0" role="button" aria-label="Ecuación general de los gases ideales" aria-pressed="false">
+        <use class="surface" href="#formula"/>
+        <text y="2.2">p·V=n·R·T</text>
+      </g>
+    </svg>
+  </main>
+
+  <main id="disoluciones" class="viewport" aria-label="Esquema interactivo de disoluciones" hidden>
+    <svg class="diagram disoluciones" viewBox="184 39 1332 876" aria-label="Relaciones entre disolvente, soluto y disolución">
+      <defs>
+        <marker id="flecha-disoluciones" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="4.1" markerHeight="4.1" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 0 10 2 5Z" fill="#444"/>
+        </marker>
+        <path id="gota-disoluciones" d="M0-60 C-18-46-54-8-54 18 C-54 42-30 60 0 60 C30 60 54 42 54 18 C54-8 18-46 0-60Z"/>
+        <path id="masa-disoluciones" d="M0-53 21-33 50-27 41 0 50 27 21 33 0 53-21 33-50 27-41 0-50-27-21-33Z"/>
+        <path id="mol-disoluciones" d="M0-53 43-28 43 28 0 53-43 28-43-28Z"/>
+      </defs>
+
+      <g class="sections">
+        <rect class="light-section" x="201" y="55" width="525" height="217" rx="18"/>
+        <rect class="solute-section" x="753" y="225" width="746" height="229" rx="18"/>
+        <rect class="light-section" x="201" y="630" width="1298" height="270" rx="18"/>
+        <text x="440" y="253">DISOLVENTE</text>
+        <text x="768" y="253">SOLUTO</text>
+        <text x="217" y="659">DISOLUCIÓN</text>
+      </g>
+
+      <g class="connections">
+        <path class="both-directions" d="M335 155 H520"/>
+        <path d="M601 155 H623 Q638 155 638 170 V660"/>
+        <path class="segment" d="M862 371 H653 Q638 371 638 386"/>
+        <path class="both-directions" d="M903 317 V276 Q903 261 918 261 H1394 Q1409 261 1409 276 V305"/>
+        <path class="both-directions" d="M945 371 H1096 L1129 376 H1188"/>
+        <path d="M903 476 V425"/>
+        <path d="M903 475 Q903 487 889 487 H834 Q819 487 819 502 V698 Q819 714 803 714 H678"/>
+        <path d="M903 475 Q903 487 917 487 H1004 Q1019 487 1019 502 V654"/>
+        <path d="M803 714 H966"/>
+        <path d="M1218 714 Q1233 714 1233 699 V431"/>
+        <path d="M1218 714 H1069"/>
+        <path d="M1218 714 H1394 Q1409 714 1409 699 V425"/>
+        <path class="both-directions" d="M638 767 V843 Q638 858 653 858 H1004 Q1019 858 1019 843 V775"/>
+      </g>
+
+      <g class="solution quantity" transform="translate(283.5 155)" data-color tabindex="0" role="button" aria-label="Volumen de disolvente" aria-pressed="false">
+        <use class="surface" href="#gota-disoluciones"/>
+        <text><tspan x="0" y="2">Volumen</tspan><tspan x="0" dy="24">d<tspan class="super">te</tspan></tspan></text>
+      </g>
+      <g class="mass quantity" transform="translate(560.5 155)" data-color tabindex="0" role="button" aria-label="Masa de disolvente" aria-pressed="false">
+        <use class="surface" href="#masa-disoluciones"/>
+        <text><tspan x="0" y="-8">Masa</tspan><tspan x="0" dy="26">d<tspan class="super">te</tspan></tspan></text>
+      </g>
+
+      <g class="mass quantity" transform="translate(902.5 371)" data-color tabindex="0" role="button" aria-label="Masa de soluto" aria-pressed="false">
+        <use class="surface" href="#masa-disoluciones"/>
+        <text><tspan x="0" y="-8">Masa</tspan><tspan x="0" dy="26">soluto</tspan></text>
+      </g>
+      <g class="amount quantity" transform="translate(1233.5 376.5)" data-color tabindex="0" role="button" aria-label="Moles de soluto" aria-pressed="false">
+        <use class="surface" href="#mol-disoluciones"/>
+        <text><tspan x="0" y="-8">Mol</tspan><tspan x="0" dy="28">soluto</tspan></text>
+      </g>
+      <g class="solution quantity" transform="translate(1409 365)" data-color tabindex="0" role="button" aria-label="Volumen de soluto" aria-pressed="false">
+        <use class="surface" href="#gota-disoluciones"/>
+        <text><tspan x="0" y="2">Volumen</tspan><tspan x="0" dy="24">soluto</tspan></text>
+      </g>
+
+      <g class="mass quantity" transform="translate(638 714)" data-color tabindex="0" role="button" aria-label="Masa de disolución" aria-pressed="false">
+        <use class="surface" href="#masa-disoluciones"/>
+        <text><tspan x="0" y="-8">Masa</tspan><tspan x="0" dy="26">d<tspan class="super">on</tspan></tspan></text>
+      </g>
+      <g class="solution quantity" transform="translate(1019.5 714)" data-color tabindex="0" role="button" aria-label="Volumen de disolución" aria-pressed="false">
+        <use class="surface" href="#gota-disoluciones"/>
+        <text><tspan x="0" y="2">Volumen</tspan><tspan x="0" dy="24">d<tspan class="super">on</tspan></tspan></text>
+      </g>
+
+      <g class="factor on-light" transform="translate(432 156)" data-color tabindex="0" role="button" aria-label="Densidad del disolvente" aria-pressed="false">
+        <rect class="surface" x="-51" y="-16" width="102" height="49" rx="8"/>
+        <text><tspan x="0" y="1">Densidad d<tspan class="super">te</tspan></tspan><tspan x="0" dy="23">(g/mL d<tspan class="super">te</tspan>)</tspan></text>
+      </g>
+      <g class="factor on-solute" transform="translate(1126 261)" data-color tabindex="0" role="button" aria-label="Densidad del soluto" aria-pressed="false">
+        <rect class="surface" x="-63" y="-17" width="126" height="49" rx="8"/>
+        <text><tspan x="0">Densidad soluto</tspan><tspan x="0" dy="23">(g/mL soluto)</tspan></text>
+      </g>
+      <g class="factor on-solute" transform="translate(1085 370)" data-color tabindex="0" role="button" aria-label="Masa molar del soluto" aria-pressed="false">
+        <path class="surface" d="M-40-17 H40 Q48-17 48-9 V1 Q48 9 40 9 H37 Q32 9 32 14 V23 Q32 32 24 32 H-24 Q-32 32-32 23 V14 Q-32 9-37 9 H-40 Q-48 9-48 1 V-9 Q-48-17-40-17Z"/>
+        <text><tspan x="0" y="1">Masa molar</tspan><tspan x="0" dy="23">(g/mol)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(835.5 550)" data-color tabindex="0" role="button" aria-label="Porcentaje en masa" aria-pressed="false">
+        <path class="surface" d="M-27-17 H27 Q36-17 36-8 V-3 Q36 5 44 5 H55 Q63 5 63 13 V23 Q63 31 55 31 H-55 Q-63 31-63 23 V13 Q-63 5-55 5 H-44 Q-36 5-36-3 V-8 Q-36-17-27-17Z"/>
+        <text><tspan x="0">% masa</tspan><tspan x="0" dy="23">(g sol/100 g d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(1028 550)" data-color tabindex="0" role="button" aria-label="Concentración en gramos por litro" aria-pressed="false">
+        <path class="surface" d="M-52-17 H52 Q61-17 61-9 V1 Q61 9 52 9 H55 Q48 9 48 16 V23 Q48 31 40 31 H-40 Q-48 31-48 23 V16 Q-48 9-55 9 H-52 Q-61 9-61 1 V-9 Q-61-17-52-17Z"/>
+        <text><tspan x="0">Concentración</tspan><tspan x="0" dy="23">(g sol/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(1233.5 550)" data-color tabindex="0" role="button" aria-label="Molaridad" aria-pressed="false">
+        <path class="surface" d="M-36-17 H36 Q45-17 45-8 V-3 Q45 5 51 5 Q56 5 56 13 V23 Q56 31 48 31 H-48 Q-56 31-56 23 V13 Q-56 5-51 5 Q-45 5-45-3 V-8 Q-45-17-36-17Z"/>
+        <text><tspan x="0">Molaridad</tspan><tspan x="0" dy="23">(mol sol/L d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor" transform="translate(1409 550)" data-color tabindex="0" role="button" aria-label="Porcentaje en volumen" aria-pressed="false">
+        <rect class="surface" x="-72" y="-17" width="144" height="48" rx="8"/>
+        <text><tspan x="0">% volumen</tspan><tspan x="0" dy="23">(mL sol/100 mL d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+      <g class="factor on-light" transform="translate(837 848)" data-color tabindex="0" role="button" aria-label="Densidad de la disolución" aria-pressed="false">
+        <path class="surface" d="M-43-19 H43 Q51-19 51-11 V0 Q51 8 44 8 Q42 8 42 15 V23 Q42 31 34 31 H-34 Q-42 31-42 23 V15 Q-42 8-44 8 Q-51 8-51 0 V-11 Q-51-19-43-19Z"/>
+        <text><tspan x="0">Densidad d<tspan class="super">on</tspan></tspan><tspan x="0" dy="23">(g/mL d<tspan class="super">on</tspan>)</tspan></text>
+      </g>
+
+      <g class="equations" aria-label="Fórmulas de porcentaje en masa, porcentaje en volumen, concentración y molaridad">
+        <rect x="209" y="320" width="297" height="268" rx="5"/>
+        <g transform="translate(241 365)" aria-label="Porcentaje en masa igual a gramos de soluto entre gramos de disolución por cien">
+          <text class="start" y="5">%<tspan class="sub">m</tspan> =</text>
+          <text x="101" y="-9">g (soluto)</text><path d="M58 0 H144"/>
+          <text x="101" y="19">g (d<tspan class="super">on</tspan>)</text>
+          <text class="start" x="150" y="5">· 100</text>
+        </g>
+        <g transform="translate(241 425)" aria-label="Porcentaje en volumen igual a mililitros de soluto entre mililitros de disolución por cien">
+          <text class="start" y="5">%<tspan class="sub">V</tspan> =</text>
+          <text x="111" y="-9">mL (soluto)</text><path d="M58 0 H164"/>
+          <text x="111" y="19">mL (d<tspan class="super">on</tspan>)</text>
+          <text class="start" x="171" y="5">· 100</text>
+        </g>
+        <g transform="translate(241 486)" aria-label="Concentración en gramos por litro igual a gramos de soluto entre litros de disolución">
+          <text class="start" y="5">C</text>
+          <path class="parentheses" d="M26-17 Q15 0 26 17 M53-17 Q64 0 53 17"/>
+          <text class="unit-fraction" x="40" y="-7">g</text><path d="M29 0 H51"/>
+          <text class="unit-fraction" x="40" y="17">L</text>
+          <text class="start" x="68" y="5">=</text>
+          <text x="135" y="-9">g (soluto)</text><path d="M92 0 H178"/>
+          <text x="135" y="19">L (d<tspan class="super">on</tspan>)</text>
+        </g>
+        <g transform="translate(241 547)" aria-label="Molaridad en moles por litro igual a moles de soluto entre litros de disolución">
+          <text class="start" y="5">M</text>
+          <path class="parentheses" d="M34-20 Q21 0 34 20 M84-20 Q97 0 84 20"/>
+          <text class="unit-fraction" x="59" y="-8">mol</text><path d="M39 0 H79"/>
+          <text class="unit-fraction" x="59" y="18">L</text>
+          <text class="start" x="99" y="5">=</text>
+          <text x="177" y="-9">mol (soluto)</text><path d="M122 0 H232"/>
+          <text x="177" y="19">L (d<tspan class="super">on</tspan>)</text>
+        </g>
+      </g>
+    </svg>
+  </main>
+</body>
+</html>
