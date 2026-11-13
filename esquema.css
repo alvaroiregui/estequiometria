@@ -16,51 +16,92 @@ body {
 }
 
 .toolbar {
+  --toolbar-ink: #f0eeeb;
+  --toolbar-accent: #a7c7e4;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 12px 20px;
-  padding: 12px clamp(14px, 3vw, 42px) 0;
+  gap: 12px 24px;
+  padding: 12px clamp(16px, 3vw, 42px);
+  background: #000;
+  color: var(--toolbar-ink);
+  border-bottom: 1px solid #30363d;
 }
 
-.toolbar .author {
-  margin: 0 0 3px;
-  color: #4d4d4d;
-  font-size: 14px;
-  font-weight: 600;
+.toolbar-titles {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.toolbar-logo {
+  display: block;
+  flex: none;
+  width: 152px;
+  max-width: 100%;
+  height: auto;
 }
 
 .toolbar h1 {
   margin: 0;
-  font-size: clamp(21px, 2.4vw, 28px);
-  line-height: 1.12;
+  padding-inline-start: 20px;
+  border-inline-start: 1px solid #474d55;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.15;
 }
 
 .toolbar-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
 }
 
-@media (max-width: 600px) {
-  :root { --toolbar-space: 127px; }
-  .toolbar { grid-template-columns: 1fr; }
-  .toolbar-actions { justify-content: flex-start; }
-}
-
 .toolbar button {
-  min-height: 42px;
-  padding: 7px 16px;
-  border: 1px solid #777;
-  border-radius: 6px;
-  background: #fff;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #747a82;
+  border-radius: 8px;
+  background: #181b20;
   color: inherit;
-  font: 600 15px/1.2 Arial, Helvetica, sans-serif;
+  font: 700 14px/1.2 Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
 
-.toolbar button:hover { background: #f3f3f3; }
-.toolbar button:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+.toolbar button:hover { background: #292e36; }
+
+.toolbar #cambiar-esquema {
+  min-width: 132px;
+  border-color: var(--toolbar-accent);
+  background: var(--toolbar-accent);
+  color: #111923;
+}
+
+.toolbar #cambiar-esquema:hover {
+  border-color: #c6def2;
+  background: #c6def2;
+}
+
+.toolbar button:focus-visible {
+  outline: 2px solid var(--toolbar-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  :root { --toolbar-space: 142px; }
+  .toolbar { grid-template-columns: minmax(0, 1fr); }
+  .toolbar-titles {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .toolbar-logo { width: 136px; }
+  .toolbar h1 {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+  .toolbar-actions { justify-content: flex-start; }
+}
 
 .viewport {
   display: grid;
